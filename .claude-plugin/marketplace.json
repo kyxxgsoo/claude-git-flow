@@ -1,0 +1,14 @@
+{
+  "name": "kyxxgsoo-git-flow",
+  "owner": {
+    "name": "kyxxgsoo"
+  },
+  "description": "Claude Code plugins by kyxxgsoo — a git workflow subagent that follows each repository's own rules.",
+  "plugins": [
+    {
+      "name": "git-flow",
+      "source": "./plugins/git-flow",
+      "description": "A git-flow-manager subagent that creates branches, commits, opens PRs, waits for CI, merges, tags and releases, following each repository's own rules."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "git-flow",
+  "version": "1.0.0",
+  "description": "git-flow-manager subagent: branch → commit → PR → CI → merge → tag → release, reading each repository's own git rules and gates first.",
+  "author": { "name": "kyxxgsoo" },
+  "repository": "https://github.com/kyxxgsoo/claude-git-flow",
+  "license": "MIT",
+  "keywords": ["git", "git-flow", "pull-request", "release", "subagent"]
+}
