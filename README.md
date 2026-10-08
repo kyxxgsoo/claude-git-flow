@@ -9,6 +9,9 @@ A Claude Code plugin that ships one subagent, **`git-flow-manager`**. It carries
 - Runs the repository's declared gates before merging (named scripts, or `lint`/`typecheck`/`test` when present) and judges them by exit code.
 - Waits for CI in the foreground and merges only when every check is green.
 - Never force-pushes, never stages files it was not given, and never touches uncommitted work it was not asked to commit.
+- Follows rule files that `CLAUDE.md`/`AGENTS.md` import (`@path` lines), one level deep.
+- **Human-merge mode**: stops after the PR and CI and reports "Awaiting human merge" — no merge, tag or release. It turns on when the caller asks ("PR only"), when the rules say only people merge, or when a rule file contains the line `git-flow-manager: human-merge`.
+- Warns in the PR body when merging into the target branch triggers a deploy workflow.
 
 ## Install
 
@@ -31,6 +34,12 @@ Start a new session after installing. The agent is available as `git-flow:git-fl
 Ask Claude to hand git work to it, for example:
 
 > Use the git-flow-manager agent: branch `feature/login` from main, commit only `src/auth.ts` and `test/auth.test.ts`, open a PR, wait for CI, merge when green.
+
+For a repository where only people merge, either say so in the request ("PR only, do not merge") or add this line to its `CLAUDE.md` or `AGENTS.md`:
+
+```
+git-flow-manager: human-merge
+```
 
 A repository that defines its own `.claude/agents/git-flow-manager.md` keeps using that one. Project agents take precedence over plugin agents.
 
